@@ -43,6 +43,7 @@ const convertToPatient = (row: PatientRow): Patient => ({
 
 // Convert Patient type to database insert
 const convertToInsert = (patient: Omit<Patient, 'id'>): PatientInsert => ({
+  rekam_medik: patient.rekamMedik,
   nama_lengkap: patient.namaLengkap,
   jenis_identitas: patient.jenisIdentitas,
   nomor_identitas: patient.nomorIdentitas,
