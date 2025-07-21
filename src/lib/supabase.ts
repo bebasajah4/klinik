@@ -45,7 +45,7 @@ export interface Database {
           hubungan_penanggung_jawab: string;
           nama_penanggung_jawab: string;
           telepon_penanggung_jawab: string;
-          foto_ktp: string;
+          foto_rontgen: string;
           created_at: string;
           updated_at: string;
         };
@@ -80,7 +80,7 @@ export interface Database {
           hubungan_penanggung_jawab: string;
           nama_penanggung_jawab: string;
           telepon_penanggung_jawab: string;
-          foto_ktp?: string;
+          foto_rontgen?: string;
           created_at?: string;
           updated_at?: string;
         };
@@ -115,7 +115,7 @@ export interface Database {
           hubungan_penanggung_jawab?: string;
           nama_penanggung_jawab?: string;
           telepon_penanggung_jawab?: string;
-          foto_ktp?: string;
+          foto_rontgen?: string;
           created_at?: string;
           updated_at?: string;
         };

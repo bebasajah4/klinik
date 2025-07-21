@@ -37,7 +37,7 @@ const convertToPatient = (row: PatientRow): Patient => ({
   hubunganPenanggungJawab: row.hubungan_penanggung_jawab,
   namaPenanggungJawab: row.nama_penanggung_jawab,
   teleponPenanggungJawab: row.telepon_penanggung_jawab,
-  fotoKTP: row.foto_ktp,
+  fotoRontgen: row.foto_rontgen,
   createdAt: row.created_at
 });
 
@@ -71,7 +71,7 @@ const convertToInsert = (patient: Omit<Patient, 'id'>): PatientInsert => ({
   hubungan_penanggung_jawab: patient.hubunganPenanggungJawab,
   nama_penanggung_jawab: patient.namaPenanggungJawab,
   telepon_penanggung_jawab: patient.teleponPenanggungJawab,
-  foto_ktp: patient.fotoKTP
+  foto_rontgen: patient.fotoRontgen
 });
 
 export const patientService = {

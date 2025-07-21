@@ -48,7 +48,7 @@ const PatientForm: React.FC<PatientFormProps> = ({
     hubunganPenanggungJawab: patient?.hubunganPenanggungJawab || '',
     namaPenanggungJawab: patient?.namaPenanggungJawab || '',
     teleponPenanggungJawab: patient?.teleponPenanggungJawab || '',
-    fotoKTP: patient?.fotoKTP || '',
+    fotoRontgen: patient?.fotoRontgen || '',
     createdAt: patient?.createdAt || new Date().toISOString()
   });
 
@@ -87,6 +87,23 @@ const PatientForm: React.FC<PatientFormProps> = ({
     // Clear error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: '' }));
+    }
+  };
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      // In real app, would upload to server and get URL
+      // For now, just store the file name
+      handleInputChange('fotoRontgen', file.name);
+      
+      // Optional: Create a preview URL for display
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        // You can use this to show preview if needed
+        console.log('File loaded:', e.target?.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -542,20 +559,21 @@ const PatientForm: React.FC<PatientFormProps> = ({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Upload Gambar</label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
+                <div 
+                  className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors cursor-pointer"
+                  onClick={() => document.getElementById('file-upload')?.click()}
+                >
                   <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                   <p className="text-sm text-gray-600">Klik untuk upload foto hasil rontgen</p>
+                  {formData.fotoRontgen && (
+                    <p className="text-sm text-green-600 mt-2">File terpilih: {formData.fotoRontgen}</p>
+                  )}
                   <input
+                    id="file-upload"
                     type="file"
                     accept="image/*"
                     className="hidden"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        // In real app, would upload to server and get URL
-                        handleInputChange('fotoKTP', file.name);
-                      }
-                    }}
+                    onChange={handleFileUpload}
                   />
                 </div>
               </div>

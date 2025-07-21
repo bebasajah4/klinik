@@ -29,7 +29,7 @@ export interface Patient {
   hubunganPenanggungJawab: string;
   namaPenanggungJawab: string;
   teleponPenanggungJawab: string;
-  fotoKTP?: string;
+  fotoRontgen?: string;
   createdAt: string;
 }
 
